@@ -1,6 +1,7 @@
 package com.example.lifehacktest.data.network.repository
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.example.lifehacktest.data.database.AppDatabase
@@ -26,6 +27,19 @@ class RepositoryImpl(private val application: Application) : Repository {
         }
 
     override fun loadData() {
+        try {
+            val topCoins = apiService.getTopCoinsInfo(limit = 50)
+            val fSyms = mapper.mapNamesListToString(topCoins)
+            val jsonContainer = apiService.getFullPriceList(fSyms = fSyms)
+            val coinInfoDtoList = mapper.mapJsonContainerToListCoinInfo(jsonContainer)
+            val dbModelList = coinInfoDtoList.map { mapper.mapDtoToDbModel(it) }
+            organizationDao.insertPriceList(dbModelList)
+        } catch (e: Exception) {
+            Log.d(NAME, "Failed to load data")
+        }
+    }
+
+    companion object {
 
     }
 

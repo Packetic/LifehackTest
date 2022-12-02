@@ -22,13 +22,35 @@ class OrganizationListActivity : AppCompatActivity() {
         val adapter = OrganizationsAdapter()
         adapter.onCardClickListener = object : OrganizationsAdapter.OnCardClickListener {
             override fun onCardClick(organization: Organization) {
-                TODO("Not yet implemented")
+                if (isOnePaneMode())
+                    launchDetailActivity(organization.id)
+                else
+                    launchDetailFragment(organization.id)
             }
         }
-        binding.rvCoinPriceList.adapter = adapter
+        binding.rvOrganizationList.adapter = adapter
         viewModel = ViewModelProvider(this)[OrganizationViewModel::class.java]
         viewModel.organizationList.observe(this) {
             adapter.submitList(it)
         }
+    }
+
+    private fun isOnePaneMode() = binding.fragmentContainer == null
+
+    private fun launchDetailActivity(fromSymbol: String) {
+        val intent = OrganizationDetailsActivity.newIntent(
+            this@OrganizationListActivity,
+            fromSymbol
+        )
+        startActivity(intent)
+    }
+
+    private fun launchDetailFragment(fromSymbol: String) {
+        supportFragmentManager.popBackStack()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, OrganizationDetailsFragment.newInstance(fromSymbol))
+            .addToBackStack(null)
+            .commit()
     }
 }
