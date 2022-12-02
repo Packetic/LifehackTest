@@ -1,8 +1,13 @@
 package com.example.lifehacktest.data.database
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "organization_details")
 data class OrganizationDetailsDbModel(
-    val description: String,
+    @PrimaryKey
     val id: String,
+    val description: String,
     val img: String,
     val lat: Double,
     val lon: Double,

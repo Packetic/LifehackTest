@@ -1,12 +1,12 @@
 package com.example.lifehacktest.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.lifehacktest.R
 
-class MainActivity : AppCompatActivity() {
+class OrganizationDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_organization_details)
     }
 }

@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.lifehacktest.data.network.model.OrganizationDetailsDto
 
 @Database(
-    entities = [OrganizationDbModel::class, OrganizationDetailsDto::class],
+    entities = [OrganizationDbModel::class, OrganizationDetailsDbModel::class],
     version = 1,
     exportSchema = false
 )

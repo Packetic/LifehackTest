@@ -12,7 +12,7 @@ interface ApiService {
     // всегда получать нулевой элемент при обращении
     @GET("test.php")
     suspend fun getOrganizationDetails(
-        @Query(ORGANIZATION_ID) id: Int = 1
+        @Query(ORGANIZATION_ID) id: String = "1"
     ): List<OrganizationDetailsDto>
 
     companion object {
