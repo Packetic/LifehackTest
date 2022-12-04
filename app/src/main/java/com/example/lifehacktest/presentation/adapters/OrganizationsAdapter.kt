@@ -1,6 +1,5 @@
 package com.example.lifehacktest.presentation.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -29,7 +28,7 @@ class OrganizationsAdapter
                 Picasso.get().load(img).into(ivOrganizationLogo)
                 tvOrganizationName.text = name
                 root.setOnClickListener {
-                    onCoinClickListener?.onCardClick(this)
+                    onCardClickListener?.onCardClick(this)
                 }
             }
         }

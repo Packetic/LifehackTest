@@ -15,7 +15,7 @@ interface OrganizationDao {
     fun getOrganizationDetails(id: String): LiveData<OrganizationDetailsDbModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertOrganization(organization: OrganizationDbModel)
+    suspend fun insertOrganizationsList(organizations: List<OrganizationDbModel>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrganizationDetails(organizationDetails: OrganizationDetailsDbModel)

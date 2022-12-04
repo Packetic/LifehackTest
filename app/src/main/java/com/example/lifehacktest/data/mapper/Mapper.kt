@@ -10,15 +10,15 @@ import com.example.lifehacktest.domain.OrganizationDetails
 class Mapper {
     fun mapOrganizationDtoToDbModel(dto: OrganizationDto) = OrganizationDbModel(
         id = dto.id,
-        img = dto.img,
-        name = BASE_IMAGE_URL + dto.name
+        img = BASE_URL + dto.img,
+        name = dto.name
     )
 
     fun mapOrganizationDetailsDtoToDbModel(dto: OrganizationDetailsDto) =
         OrganizationDetailsDbModel(
             description = dto.description,
             id = dto.id,
-            img = BASE_IMAGE_URL + dto.img,
+            img = BASE_URL + dto.img,
             lat = dto.lat,
             lon = dto.lon,
             name = dto.name,
@@ -45,6 +45,6 @@ class Mapper {
         )
 
     companion object {
-        private const val BASE_IMAGE_URL = "https://lifehack.studio/test_task/"
+        private const val BASE_URL = "https://lifehack.studio/test_task/"
     }
 }

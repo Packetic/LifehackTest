@@ -7,5 +7,6 @@ import com.example.lifehacktest.domain.OrganizationDetails
 interface Repository {
     fun getOrganizationList(): LiveData<List<Organization>>
     fun getOrganizationDetails(id: String): LiveData<OrganizationDetails>
-    fun loadData()
+    suspend fun loadOrganizationData()
+    suspend fun loadOrganizationDetails(id: String)
 }

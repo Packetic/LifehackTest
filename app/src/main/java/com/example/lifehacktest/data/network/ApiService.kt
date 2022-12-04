@@ -9,7 +9,6 @@ interface ApiService {
     @GET("test.php")
     suspend fun getOrganizationsList(): List<OrganizationDto>
 
-    // всегда получать нулевой элемент при обращении
     @GET("test.php")
     suspend fun getOrganizationDetails(
         @Query(ORGANIZATION_ID) id: String = "1"

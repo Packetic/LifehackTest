@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">LifehackTest</string>
     <string name="title_activity_organization_details">OrganizationDetailsActivity</string>
+    <string name="label_phone">Телефон</string>
+    <string name="label_www">Сайт</string>
+    <string name="label_description">Описание</string>
 </resources>

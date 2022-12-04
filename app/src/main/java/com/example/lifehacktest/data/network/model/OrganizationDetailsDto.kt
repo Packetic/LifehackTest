@@ -2,7 +2,6 @@ package com.example.lifehacktest.data.network.model
 
 import androidx.room.Entity
 
-@Entity(tableName = "organization_details")
 data class OrganizationDetailsDto(
     val description: String,
     val id: String,

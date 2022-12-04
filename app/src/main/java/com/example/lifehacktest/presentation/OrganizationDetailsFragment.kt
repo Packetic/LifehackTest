@@ -1,12 +1,14 @@
 package com.example.lifehacktest.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.lifehacktest.databinding.FragmentOrganizationDetailsBinding
+import com.squareup.picasso.Picasso
 
 class OrganizationDetailsFragment : Fragment() {
 
@@ -32,8 +34,18 @@ class OrganizationDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[OrganizationViewModel::class.java]
         val id = getIdArgument()
+        viewModel.getOrganizationDetails(id)
         viewModel.getOrganizationDetails(id).observe(viewLifecycleOwner) {
-
+            if (it != null) {
+                with(binding) {
+                    Picasso.get().load(it.img).into(ivLogoCoin)
+                    tvDescName.text = it.name
+                    tvDesc.text = it.description
+                    tvPhone.text = it.phone
+                    tvSite.text = it.www
+                    Log.d("OrganizationDetailsFragment", id)
+                }
+            }
         }
     }
 
